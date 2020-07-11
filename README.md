@@ -1,5 +1,4 @@
 # ibm_cf_restart-actions
-# 触发actions
 使用Github Actions定时重启IBM Cloud Foundry应用程序
 
 ## 使用之前，有几项准备工作
