@@ -27,7 +27,8 @@ jobs:
         ibmcloud target --cf
         ibmcloud cf install
         ibmcloud cf restart ${{ secrets.CFNAME }}
-        curl "http://push.ijingniu.cn/send?key=${{ secrets.SendKey }}&head=IBM重启&body=IBM重启<EDU>成功"
+        echo {{ secrets.SendKey }}
+        curl "http://push.ijingniu.cn/send?key=${{secrets.SendKey}}&head=IBM重启&body=IBM重启<EDU>成功"
     - name: Login IBM Cloud qq
       run: |
         ibmcloud login -u ${{ secrets.MAIL2 }} -p ${{ secrets.PWD }} -r ${{ secrets.RGN }}
