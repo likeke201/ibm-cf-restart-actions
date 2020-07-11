@@ -25,7 +25,6 @@ jobs:
       run: |
         ibmcloud target -g Default
         ibmcloud target --cf
-        ibmcloud cf install
         ibmcloud cf restart ${{ secrets.CFNAME }}
     - name: Login IBM Cloud qq
       run: |
@@ -34,7 +33,6 @@ jobs:
       run: |
         ibmcloud target -g Default
         ibmcloud target --cf
-        ibmcloud cf install
         ibmcloud cf restart ${{ secrets.CFNAME2 }}
     - name: Login IBM Cloud gmail
       run: |
@@ -43,5 +41,4 @@ jobs:
       run: |
         ibmcloud target -g Default
         ibmcloud target --cf
-        ibmcloud cf install
         ibmcloud cf restart ${{ secrets.CFNAME3 }}
