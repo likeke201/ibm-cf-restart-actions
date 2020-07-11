@@ -21,29 +21,28 @@ jobs:
     - name: Login IBM Cloud edu
       run: |
         ibmcloud login -u ${{ secrets.MAIL }} -p ${{ secrets.PWD }} -r ${{ secrets.RGN }}
-    - name: Restart
+    - name: Restart EDU
       run: |
         ibmcloud target -g Default
         ibmcloud target --cf
         ibmcloud cf install
         ibmcloud cf restart ${{ secrets.CFNAME }}
-        echo {{ secrets.SendKey }}
-        curl "http://push.ijingniu.cn/send?key=${{secrets.SendKey}}&head=IBM重启&body=IBM重启<EDU>成功"
+        curl "http://push.ijingniu.cn/send?key=${{secrets.SENDKEY}}&head=IBM重启&body=IBM重启<EDU>成功"
     - name: Login IBM Cloud qq
       run: |
         ibmcloud login -u ${{ secrets.MAIL2 }} -p ${{ secrets.PWD }} -r ${{ secrets.RGN }}
-    - name: Restart2
+    - name: Restart QQ
       run: |
         ibmcloud target -g Default
         ibmcloud target --cf
         ibmcloud cf restart ${{ secrets.CFNAME2 }}
-        curl "http://push.ijingniu.cn/send?key=${{ secrets.SendKey }}&head=IBM重启&body=IBM重启<QQ>成功"
+        curl "http://push.ijingniu.cn/send?key=${{ secrets.SENDKEY }}&head=IBM重启&body=IBM重启<QQ>成功"
     - name: Login IBM Cloud gmail
       run: |
         ibmcloud login -u ${{ secrets.MAIL3 }} -p ${{ secrets.PWD }} -r ${{ secrets.RGN }}
-    - name: Restart2
+    - name: Restart Gmail
       run: |
         ibmcloud target -g Default
         ibmcloud target --cf
         ibmcloud cf restart ${{ secrets.CFNAME3 }}
-        curl "http://push.ijingniu.cn/send?key=${{ secrets.SendKey }}&head=IBM重启&body=IBM重启<Gmail>成功"
+        curl "http://push.ijingniu.cn/send?key=${{ secrets.SENDKEY }}&head=IBM重启&body=IBM重启<Gmail>成功"
