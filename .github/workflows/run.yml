@@ -27,3 +27,12 @@ jobs:
         ibmcloud target --cf
         ibmcloud cf install
         ibmcloud cf restart ${{ secrets.CFNAME }}
+    - name: Login IBM Cloud2
+      run: |
+        ibmcloud login -u ${{ secrets.MAIL2 }} -p ${{ secrets.PWD2 }} -r ${{ secrets.RGN2 }}
+    - name: Restart2
+      run: |
+        ibmcloud target -g Default
+        ibmcloud target --cf
+        ibmcloud cf install
+        ibmcloud cf restart ${{ secrets.CFNAME2 }}
