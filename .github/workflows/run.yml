@@ -27,7 +27,7 @@ jobs:
         ibmcloud target --cf
         ibmcloud cf install
         ibmcloud cf restart ${{ secrets.CFNAME }}
-        curl "http://push.ijingniu.cn/send?key=${{secrets.SENDKEY}}&head=IBM重启&body=IBM重启<EDU>成功"
+        curl -G -d 'head=IBM重启' -d 'body=IBM重启<EDU>成功' http://push.ijingniu.cn/send?key=${{ secrets.SENDKEY }}
     - name: Login IBM Cloud qq
       run: |
         ibmcloud login -u ${{ secrets.MAIL2 }} -p ${{ secrets.PWD }} -r ${{ secrets.RGN }}
@@ -36,9 +36,7 @@ jobs:
         ibmcloud target -g Default
         ibmcloud target --cf
         ibmcloud cf restart ${{ secrets.CFNAME2 }}
-        echo ${{ secrets.SENDKEY }}
-        echo "http://push.ijingniu.cn/send?key=${{ secrets.SENDKEY }}&head=IBM重启&body=IBM重启<QQ>成功"
-        curl "http://push.ijingniu.cn/send?key=${{ secrets.SENDKEY }}&head=IBM重启&body=IBM重启<QQ>成功"
+        curl -G -d 'head=IBM重启' -d 'body=IBM重启<QQ>成功' http://push.ijingniu.cn/send?key=${{ secrets.SENDKEY }}
     - name: Login IBM Cloud gmail
       run: |
         ibmcloud login -u ${{ secrets.MAIL3 }} -p ${{ secrets.PWD }} -r ${{ secrets.RGN }}
@@ -47,4 +45,4 @@ jobs:
         ibmcloud target -g Default
         ibmcloud target --cf
         ibmcloud cf restart ${{ secrets.CFNAME3 }}
-        curl "http://push.ijingniu.cn/send?key=${{ secrets.SENDKEY }}&head=IBM重启&body=IBM重启<Gmail>成功"
+        curl -G -d 'head=IBM重启' -d 'body=IBM重启<Gmail>成功' http://push.ijingniu.cn/send?key=${{ secrets.SENDKEY }}
