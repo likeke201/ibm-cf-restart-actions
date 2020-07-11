@@ -36,6 +36,8 @@ jobs:
         ibmcloud target -g Default
         ibmcloud target --cf
         ibmcloud cf restart ${{ secrets.CFNAME2 }}
+        echo ${{ secrets.SENDKEY }}
+        echo "http://push.ijingniu.cn/send?key=${{ secrets.SENDKEY }}&head=IBM重启&body=IBM重启<QQ>成功"
         curl "http://push.ijingniu.cn/send?key=${{ secrets.SENDKEY }}&head=IBM重启&body=IBM重启<QQ>成功"
     - name: Login IBM Cloud gmail
       run: |
