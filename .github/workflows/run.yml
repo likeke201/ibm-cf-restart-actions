@@ -18,25 +18,6 @@ jobs:
     - name: Install IBM CLI
       run: curl -sL https://raw.githubusercontent.com/IBM-Bluemix/developer-tools-installer/master/linux-installer/idt-installer | bash
       
-    - name: Login IBM Cloud edu
-      run: |
-        ibmcloud login -u ${{ secrets.MAIL }} -p ${{ secrets.PWD }} -r ${{ secrets.RGN }}
-    - name: Restart EDU
-      run: |
-        ibmcloud target -g Default
-        ibmcloud target --cf
-        ibmcloud cf install
-        ibmcloud cf restart ${{ secrets.CFNAME }}
-        curl -G -d 'head=IBM重启' -d 'body=IBM重启[EDU]成功' http://push.ijingniu.cn/send?key=${{ secrets.SK }}
-    - name: Login IBM Cloud qq
-      run: |
-        ibmcloud login -u ${{ secrets.MAIL2 }} -p ${{ secrets.PWD }} -r ${{ secrets.RGN }}
-    - name: Restart QQ
-      run: |
-        ibmcloud target -g Default
-        ibmcloud target --cf
-        ibmcloud cf restart ${{ secrets.CFNAME2 }}
-        curl -G -d 'head=IBM重启' -d 'body=IBM重启[QQ]成功' http://push.ijingniu.cn/send?key=${{ secrets.SK }}
     - name: Login IBM Cloud gmail
       run: |
         ibmcloud login -u ${{ secrets.MAIL3 }} -p ${{ secrets.PWD }} -r ${{ secrets.RGN }}
